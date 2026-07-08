@@ -355,6 +355,7 @@ If the information is unavailable, it will tell you that it could not find the a
             st.info(
             f"Using existing vector database for {st.session_state.uploaded_pdf_name}"
         )
+    if st.session_state.pdf_uploaded:
         if st.button('🔄 Upload Another PDF'):
             st.session_state.vector_db = None
             st.session_state.pdf_uploaded = False
