@@ -2,77 +2,106 @@
 
 > **An AI-powered Petroleum Engineering Assistant built using Google Gemini, Streamlit, FAISS, Sentence Transformers, and Retrieval-Augmented Generation (RAG).**
 
-PetroGPT is an intelligent AI assistant specifically designed for Petroleum Engineering students, researchers, and professionals. It combines Large Language Models (LLMs) with semantic search to provide accurate, context-aware answers from uploaded petroleum engineering documents while also serving as a specialized petroleum engineering chatbot.
+PetroGPT is an intelligent AI assistant designed specifically for Petroleum Engineering students, researchers, and professionals. It combines Large Language Models (LLMs) with semantic document retrieval to answer petroleum engineering questions, understand uploaded PDF documents, and provide accurate, context-aware responses.
 
 ---
 
-# 📌 Features
+# 🌐 Live Demo
+
+🚀 **Try PetroGPT Online**
+
+**Live App:**  
+https://petrogpt-orcp5r2adjbeapjctlwadg.streamlit.app/
+
+> **Note:** PetroGPT uses the free Google Gemini API. During periods of heavy usage, you may occasionally experience slower responses or temporary quota (HTTP 429) errors. Simply wait a minute and try again.
+
+---
+
+# 🚀 Project Evolution
+
+PetroGPT was developed incrementally, with each version introducing new capabilities and architectural improvements.
+
+| Version | Description |
+|----------|-------------|
+| **Version 1** | Basic Petroleum Engineering chatbot powered by Google Gemini. Capable of answering petroleum engineering questions without document support. |
+| **Version 2** | Introduced conversation memory and improved prompt engineering for more natural interactions. |
+| **Version 3** | Added PDF upload, text extraction, PDF summarization, key point extraction, and chat export functionality. |
+| **Version 4** | Improved user interface, better conversation handling, enhanced PDF workflow, and overall application stability. |
+| **Version 5 (Current)** | Complete Retrieval-Augmented Generation (RAG) implementation using document chunking, semantic embeddings, FAISS vector database, and semantic retrieval for highly accurate PDF question answering. |
+
+Older versions are included in the repository to showcase the complete development journey of PetroGPT.
+
+---
+
+# ✨ Features
 
 ## 🤖 AI Petroleum Engineering Assistant
 
-- Ask technical questions related to Petroleum Engineering.
-- Professional responses powered by **Google Gemini 2.5 Flash**.
-- Specialized prompt engineering for petroleum engineering concepts.
+- Ask technical petroleum engineering questions
+- Professional AI responses powered by Google Gemini 2.5 Flash
+- Specialized prompt engineering for engineering concepts
 
 ---
 
 ## 📄 PDF Question Answering
 
-Upload petroleum engineering documents and interact with them using natural language.
+Upload petroleum engineering PDFs and interact with them naturally.
 
 Supported documents include:
 
-- Reservoir Engineering notes
-- Drilling Engineering manuals
-- Production Engineering reports
-- Petrophysics notes
-- Well Logging documents
-- Research papers
-- Lecture notes
+- Reservoir Engineering
+- Drilling Engineering
+- Production Engineering
+- Petrophysics
+- Well Logging
+- Formation Evaluation
+- Research Papers
+- Lecture Notes
 
 ---
 
 ## 🧠 Retrieval-Augmented Generation (RAG)
 
-Instead of sending the complete PDF to the language model, PetroGPT follows a modern RAG workflow:
+PetroGPT follows a modern Retrieval-Augmented Generation workflow:
 
-1. Extract text from the uploaded PDF
-2. Split the document into semantic chunks
-3. Generate vector embeddings
-4. Store embeddings inside a FAISS vector database
-5. Retrieve only the most relevant chunks
-6. Generate accurate context-aware responses using Gemini
+1. Upload PDF
+2. Extract Text
+3. Split into Semantic Chunks
+4. Generate Embeddings
+5. Store in FAISS Vector Database
+6. Retrieve Relevant Context
+7. Generate AI Response using Gemini
 
-This significantly improves:
+Benefits:
 
-- Response quality
-- Scalability
-- Token efficiency
-- Retrieval accuracy
+- Improved answer accuracy
+- Faster retrieval
+- Reduced token usage
+- Scalable document understanding
 
 ---
 
 ## 🔍 Semantic Search
 
-PetroGPT performs semantic similarity search rather than simple keyword matching, enabling it to understand the meaning behind user queries and retrieve the most relevant information.
+Uses semantic similarity instead of keyword matching to retrieve the most relevant sections of uploaded documents.
 
 ---
 
-## 💾 Persistent Vector Database
+## 💾 Local Vector Database
 
-Document embeddings are stored locally using **FAISS**, allowing previously processed documents to be reused without recreating embeddings every time.
+Embeddings are stored locally using **FAISS**, allowing efficient semantic search across indexed documents.
 
 ---
 
 ## 💬 Conversation Memory
 
-Maintains conversation history throughout the current session, enabling more natural follow-up questions.
+Maintains conversation history during the current chat session for contextual follow-up questions.
 
 ---
 
-## 📥 Chat Export
+## 📥 Export Chat
 
-Download the complete chat history for future reference.
+Download the complete conversation history for future reference.
 
 ---
 
@@ -107,23 +136,28 @@ Download the complete chat history for future reference.
 
 ---
 
-# ⚙️ Technologies Used
+# ⚙️ Tech Stack
 
 ### Frontend
+
 - Streamlit
 
 ### AI Model
+
 - Google Gemini 2.5 Flash
 
 ### Retrieval-Augmented Generation
+
+- LangChain
 - FAISS
 - Sentence Transformers
-- LangChain
 
 ### PDF Processing
+
 - PyPDF
 
 ### Programming Language
+
 - Python
 
 ---
@@ -147,11 +181,17 @@ PetroGPT/
 │   ├── retriever.py
 │   └── prompts.py
 │
+├── versions/
+│   ├── PetroGPT_v1/
+│   ├── PetroGPT_v2/
+│   ├── PetroGPT_v3/
+│   └── PetroGPT_v4/
+│
 ├── vector_db/
-
+│
+└── screenshots/
 ```
 
----
 
 # 🎯 Current Capabilities
 
@@ -167,24 +207,24 @@ PetroGPT/
 
 # ⚠️ Important Notes
 
-- PetroGPT currently uses the **Google Gemini Free API**, which is subject to request and token rate limits.
-- If you upload very large PDF files or repeatedly ask many questions within a short period, you may encounter temporary **quota exceeded (HTTP 429)** errors.
-- Large documents require chunking, embedding generation, and vector indexing, so the **first upload may take some time** depending on the document size and your internet connection.
-- Once a document has been indexed, semantic retrieval becomes significantly faster.
-- This project is intended for **educational and research purposes** and should not replace professional engineering judgement for critical field operations.
+- PetroGPT currently uses the **Google Gemini Free API**, which has request and token rate limits.
+- Large PDF documents require additional processing time during the first upload because embeddings and the FAISS vector database must be generated.
+- If you encounter temporary **HTTP 429 (Quota Exceeded)** errors, simply wait a short period before trying again.
+- This project is intended for educational and research purposes and should not replace professional engineering judgement for real-world petroleum operations.
 
 ---
 
-# 📈 Future Improvements
+# 🚀 Future Roadmap
 
 - Multi-document knowledge base
-- Page-level citations
+- Source citations with page numbers
 - PDF preview
 - Streaming AI responses
 - Knowledge base management
 - Petroleum engineering calculators
+- Reservoir simulation integration
 - Well log interpretation
-- Reservoir engineering utilities
+- Multi-user support
 
 ---
 
@@ -192,7 +232,8 @@ PetroGPT/
 
 **Sayan Das**
 
-Petroleum Engineering Undergraduate | AI & Machine Learning Enthusiast
+Petroleum Engineering Undergraduate  
+AI & Machine Learning Enthusiast
 
 GitHub: https://github.com/yourusername
 
@@ -203,3 +244,5 @@ LinkedIn: https://linkedin.com/in/yourprofile
 # ⭐ Support
 
 If you found this project useful, consider giving the repository a **⭐ Star**.
+
+Your support motivates future development.
