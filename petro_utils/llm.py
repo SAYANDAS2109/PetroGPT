@@ -50,9 +50,12 @@ def get_response(question):
             prompt,
             generation_config={
                 "temperature": 0.2,
-                "max_output_tokens": 700
+                "max_output_tokens": 2048,
+                "top_p": 0.95,
+                "top_k": 40
             }
         )
+        print("Finish Reason:", response.candidates[0].finish_reason)
 
         return response.text
 
